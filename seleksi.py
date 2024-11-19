@@ -156,7 +156,7 @@ def main():
             tampilkan_berdasarkan_status(pendaftar, 'Lolos Seleksi')
         
         elif pilihan == '2':
-            # Tampilkan peserta yang tidak lolos seleksi
+            # Tampilkan peserta yang tidak lolos 
             tampilkan_berdasarkan_status(pendaftar, 'Tidak Lolos')
         
         elif pilihan == '3':
