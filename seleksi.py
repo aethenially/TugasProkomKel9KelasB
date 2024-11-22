@@ -141,7 +141,7 @@ def main():
     # Setelah data peserta dimasukkan, lakukan seleksi
     seleksi(pendaftar, batas_tinggi_laki, batas_tinggi_perempuan, nilai_minimum, bobot_tiu, bobot_twk, bobot_tkp)
     
-    # Menu utama untuk melihat hasil seleksi
+    # Menu
     while True:
         print("\nMenu Hasil Seleksi:")
         print("1. Tampilkan daftar peserta yang lolos seleksi")
