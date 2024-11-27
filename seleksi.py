@@ -4,12 +4,20 @@ Created on Sat Nov 23 20:18:45 2024
 
 @author: Lenovo
 """
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Nov 23 20:12:09 2024
+
+@author: Lenovo
+"""
+
 import os 
 import csv
 import hashlib
 from tabulate import tabulate 
 
-# Database sederhana untuk menyimpan akun (Email dan Password)
+# Database sederhana untuk menyimpan akun (username dan Password)
 akun_db = {}
 
 # Fungsi untuk mengenkripsi password
@@ -18,17 +26,17 @@ def enkripsi_password(password):
 
 def simpan_akun_csv():
     with open('akun.csv', mode='w', newline='') as file:
-        writer = csv.DictWriter(file, fieldnames=['Email', 'Password'])
+        writer = csv.DictWriter(file, fieldnames=['username', 'Password'])
         writer.writeheader()
-        for email, password in akun_db.items():
-            writer.writerow({'Email': email, 'Password': password})
+        for username, password in akun_db.items():
+            writer.writerow({'username': username, 'Password': password})
 
 def baca_akun_csv():
     try:
         with open('akun.csv', mode='r') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                akun_db[row['Email']] = row['Password']  # Muat data ke akun_db
+                akun_db[row['username']] = row['Password']  # Muat data ke akun_db
     except FileNotFoundError:
         print("File akun.csv tidak ditemukan. Membuat file baru.")
 
@@ -54,11 +62,11 @@ def tampilkan_tabel_csv():
 
 def signup():
     print("=========== Signup ===========")
-    email = input("Masukkan email: ")
+    username = input("Masukkan username: ")
     
-    # Cek jika email sudah terdaftar
-    if email in akun_db:
-        print("Email sudah terdaftar, silakan login.")
+    # Cek jika username sudah terdaftar
+    if username in akun_db:
+        print("username sudah terdaftar, silakan login.")
         return False
     
     password = input("Masukkan password: ")
@@ -68,21 +76,21 @@ def signup():
         print("Password tidak cocok. Silakan coba lagi.")
         return False
     
-    akun_db[email] = enkripsi_password(password)
+    akun_db[username] = enkripsi_password(password)
     print("Akun berhasil dibuat! Silakan login.")
     return True
 
 # Fungsi untuk login
 def login():
     print("=========== Login ===========")
-    email = input("Masukkan email: ")
+    username = input("Masukkan username: ")
     password = input("Masukkan password: ")
     
-    if email in akun_db and akun_db[email] == enkripsi_password(password):
+    if username in akun_db and akun_db[username] == enkripsi_password(password):
         print("Login berhasil!")
         return True
     else:
-        print("Email atau password salah. Coba lagi.")
+        print("username atau password salah. Coba lagi.")
         return False
 
 # Fungsi untuk menghitung IMT
@@ -112,7 +120,7 @@ def tampilkan_tabel(pendaftar):
 def tampilkan_berdasarkan_status(pendaftar, status):
     
     print("\n===========================================")
-    print(f"  DAFTAR PESERTA YANG {status.upper()}")
+    print("  DAFTAR PESERTA YANG ",{status.upper()})
     print("===========================================\n")
 
     filtered = [peserta for peserta in pendaftar if peserta['status'] == status]
@@ -147,7 +155,7 @@ def simpan_pendaftar_csv(pendaftar):
                 int(peserta['nilai_tes']),        # Nilai tes tanpa desimal
                 peserta['status']
             ])
-    print("Data peserta berhasil disimpan dengan format rapi ke peserta.csv")
+    print("Data peserta berhasil disimpan")
 
 
 def baca_pendaftar_csv():
@@ -207,15 +215,16 @@ def main():
     
     # Pilih antara login atau signup
     while True:
-        pilihan = input("Apakah Anda sudah memiliki akun? (login/signup): ").lower()
-        if pilihan == 'login':
+        pilihan = input("Apakah Anda sudah memiliki akun? (ya/tidak): ").lower()
+        if pilihan == 'ya':
             if login():
                 break
-        elif pilihan == 'signup':
+        elif pilihan == 'tidak':
             if signup():
+                simpan_akun_csv()  # Simpan akun ke file CSV
                 break
         else:
-            print("Pilihan tidak valid. Pilih antara 'login' atau 'signup'.")
+            print("Pilihan tidak valid. Pilih antara 'ya' atau 'tidak'.")
     
     # Setelah login/signup berhasil, lanjutkan ke menu seleksi
     pendaftar = []  # List untuk menyimpan data peserta
@@ -226,8 +235,8 @@ def main():
         print("2. Lihat daftar peserta yang lolos")
         print("3. Lihat daftar peserta yang tidak lolos")
         print("4. Lihat peringkat peserta")
-        print("5. Keluar dan simpan pembaruan data")
-        print("6. Menampilkan tabel peserta yang telah disimpan ke CSV")  # Lebih deskriptif
+        print("5. Keluar")
+        
 
         pilihan = input("Pilih menu (1-6): ")
         if pilihan == '1':
@@ -304,6 +313,9 @@ def main():
                     'nilai_tes': 0,  # Nilai tes dihitung nanti
                     'status': 'Belum Di Seleksi'  # Status akan diupdate saat seleksi
                 })
+            
+            simpan_pendaftar_csv(pendaftar)  # Simpan data peserta ke file CSV
+            print("data berhasil ditambahkan!")
 
         elif pilihan == '2':
             if not pendaftar:
@@ -330,26 +342,12 @@ def main():
 
         elif pilihan == '5':
             print("Terima kasih telah menggunakan program ini.")
-            simpan_akun_csv()  # Simpan akun ke file CSV
             simpan_pendaftar_csv(pendaftar)  # Simpan data peserta ke file CSV
-            print("Data telah disimpan. Terima kasih telah menggunakan program ini.")
             break
 
-        elif pilihan == '6':
-            print("\nMenampilkan tabel peserta dari file CSV:")
-            tampilkan_tabel_csv()
             
         else:
             print("Pilihan tidak valid. Silakan pilih menu yang ada.")
-            
+
 if __name__ == "__main__":
-    # Muat data akun
-    baca_akun_csv()
-
-    # Muat data peserta
-    global pendaftar
-    pendaftar = baca_pendaftar_csv()
-
-    # Jalankan program utama
     main()
-
