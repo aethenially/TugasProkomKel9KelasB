@@ -21,6 +21,12 @@ kelompok kami membuat program seleksi untuk masuk sekolah kedinasan. program ini
 
 kelompok kami membuat program seleksi masuk kedinasan. program ini memiliki alur sebagai berikut, mula mula user melaku kan login atau signin, setelah berhasil lalu input jumlah pendaftar (n), i = 0 lalu input bobot nilai tes tertulis (TIU, TWK, TKP) dengan bobot tersebut merupakan nilai benar per soal. lalu input batas tinggi badan minimal laki-laki dan perempuan  lalu input nilai tes tertulis minimal yang menjadi acuan untuk menentukan lolos atau tidaknya. lalu lakukan looping dengan input nama pendaftar, jenis kelamin, tinggi badan dan berat badan, jumlah soal yang benar pada TIU, TWK, TKP. setelah n terpenuhi lalu lanjut untuk menghitung IMT pendaftar dengan rumus IMT = BB/TB^2. selanjutnya hitung nilai tes tertulis dengan rumus Nilai Tes Tertulis = (Jmlh benar TIU bobot TIU) + (jmlh benar TWK bobot TWK) + (jmih benar TKP bobot TKP). setelah data disimpan lalu percabangan dengan penentuan jenis kelamin, jika laki laki di seleksi dengan batas tinggi badan minimal, 18,5 <= IMT <= 24,9 dan seleksi dengan nilai tes tulis minimal. jika perempuan seleksi tinggi badan minimal dan 18,5 <= IMT <= 24,9 serta minimum nilai tes tulis, program ini menghasilkan output berupa nama pendaftar, nilai pendaftar, IMT dan status pendaftar berupa lolos seleksi atau tidak lolos seleksi dalam ntuk tabel.
 
+# Library yg digunakan 
+1. Hashlib
+2. Csv
+3. Os
+4. Time
+
 
 
 
