@@ -14,6 +14,7 @@ Program ini dirancang untuk membantu menentukan kelayakan calon siswa dalam meng
 4. Penyaringan calon siswa berdasarkan tinggi badan minimal, nilai tes tertulis, dan IMT sesuai dengan jenis kelamin pendaftar.
 5. Penyajian output berupa lolos tidaknya peserta dalam bentuk tabel.
 
+
 # Diagram Alir 
 ![FLOWCHART TUBES rev 2 3](https://github.com/user-attachments/assets/29efcfc2-b34d-4400-a072-0d1aed75d7a3)
 
@@ -24,6 +25,15 @@ Setelah menginput kriteria lalu kita dapat melanjutkannya dengan menginput jumla
 
 # Revisi Flowchart 
 ![Untitled Diagram drawio](https://github.com/user-attachments/assets/e2003beb-c807-4321-907f-e98abe167ca6)
+
+# Fitur tambahan 
+1. Melakukan seleksi dengan parameter yang dapat diubah setiap tahunya
+2. Melihat hasi seleksi peserta dengan tahun lulus yang diinginkan
+
+# Lirary yang digunakan
+1. Hashlib
+2. OS
+3. Time
 
 
 
