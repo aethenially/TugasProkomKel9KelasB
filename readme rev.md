@@ -27,6 +27,8 @@ kelompok kami membuat program seleksi masuk kedinasan. program ini memiliki alur
 3. Os
 4. Time
 
+# Diagram Alir Revisi
+![Untitled Diagram drawio](https://github.com/user-attachments/assets/a2d1274d-9c6c-4e65-b5a4-e9346faa9073)
 
 
 
