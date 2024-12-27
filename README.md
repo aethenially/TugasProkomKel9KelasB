@@ -22,6 +22,8 @@ Flowchart ini menggambarkan proses seleksi kelulusan berdasarkan beberapa kriter
 Setelah menginput kriteria lalu kita dapat melanjutkannya dengan menginput jumlah pendaftar yang akan mengikuti seleksi, lalu menginput data diri berupa nama, jenis kelamin, tinggi badan, dan berat badan, serta  jumlah soal yang benar pada setiap jenis TKD (Tes Kompetensi Dasar). Program akan meminta input data setiap pendaftar selama i <= n. Jika sudah mencapai jumlah pendaftar, program akan otomatis melakukan perhitungan Indeks Massa Tubuh (IMT) dan Nilai Tes Tertulis lalu program akan melakukan proses penyeleksian berdasarkan kriteria yang telah ditetapkan dan menghasilkan output berupa lolos atau tidak lolos setiap pendaftar selama i <= n. jika sudah mencapai jumlah pendaftar program ini akan berakhir.
 
 
+# Revisi Flowchart 
+![Untitled Diagram drawio](https://github.com/user-attachments/assets/e2003beb-c807-4321-907f-e98abe167ca6)
 
 
 
